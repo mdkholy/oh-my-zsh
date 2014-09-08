@@ -1,6 +1,6 @@
 function get_php_version() {
   if type "php" > /dev/null; then
-    version=$(php -v | grep "PHP 5" | sed 's/.*PHP \([^-]*\).*/\1/' | cut -c 1-5)
+    version=$(php -v | grep "PHP 5" | sed 's/.*PHP \([^-]*\).*/\1/' | cut -c 1-6)
     if [[ -z "$PHPBREW_PHP" ]] then
       echo "php:$version-system"
     else
