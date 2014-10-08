@@ -1,18 +1,5 @@
-function get_php_version() {
-  if type "php" > /dev/null; then
-    version=$(php -v | grep "PHP 5" | sed 's/.*PHP \([^-]*\).*/\1/' | cut -c 1-6 | tr -d ' ')
-    if [[ -z "$PHPBREW_PHP" ]] then
-      echo "php:$version-system"
-    else
-      echo "php:$version-phpbrew"
-    fi
-  else
-     echo "php:not-installed"
-  fi
-}
-
 PROMPT='%{$fg_no_bold[yellow]%}%n%{$reset_color%} ➜ %{$fg_no_bold[cyan]%}%3~$(git_prompt_info)%{$reset_color%} » '
-RPROMPT='%{$fg_no_bold[yellow]%}[$(get_php_version)] %{$reset_color%}'
+RPROMPT='%{$fg_no_bold[yellow]%}[$(phpbrew_current_php_version)] %{$reset_color%}'
 
 # git theming
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[magenta]%} (%{$fg_no_bold[magenta]%}"
